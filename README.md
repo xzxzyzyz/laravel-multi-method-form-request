@@ -43,6 +43,8 @@ Methods corresponding to each request method:
  
 ### Example
 
+FormRequest is:
+
 ```php
 use Xzxzyzyz\Laravel\FormRequest\MultiMethodRule;
 
@@ -53,67 +55,71 @@ class ExampleRequest extends FormRequest
     public function rules()
     {
         return [
-            'default' => [
-                'required',
-                'string'
-            ]
+            'default' => 'required'
         ];
     }
 
     public function getRules()
     {
         return [
-            'default' => [
-                'url',
-                'active_url'
-            ],
-            'get' => [
-                'required',
-                'string'
-            ]
+            'default' => 'it_is_get_rule',
+            'get' => 'required'
         ];
     }
 
     public function createRules()
     {
         return [
-            'default' => [
-                'url',
-                'active_url'
-            ],
-            'post' => [
-                'required',
-                'string'
-            ]
+            'default' => 'it_is_create_rule',
+            'post' => 'required'
         ];
     }
 
     public function updateRules()
     {
         return [
-            'default' => [
-                'url',
-                'active_url'
-            ],
-            'put' => [
-                'required',
-                'string'
-            ]
+            'default' => 'it_is_update_rule',
+            'put' => 'required'
         ];
     }
 
     public function deleteRules()
     {
         return [
-            'default' => [
-                'url',
-                'active_url'
-            ],
-            'delete' => [
-                'required',
-                'string'
-            ]
+            'default' => 'it_is_delete_rule',
+            'delete' => 'required'
         ];
     }
 }
 ```
+
+If `GET` request, Return rules is:
+
+ name    | rules
+:--------|:----------
+ default | required, it_is_get_rule
+ get     | required
+
+
+If `POST` request, Return rules is:
+
+ name    | rules
+:--------|:----------
+ default | required, it_is_create_rule
+ post    | required
+
+
+If `PUT` request, Return rules is:
+
+ name    | rules
+:--------|:----------
+ default | required, it_is_update_rule
+ put     | required
+
+
+If `DELETE` request, Return rules is:
+
+ name      | rules
+:----------|:----------
+ default   | required, it_is_delete_rule
+ delete    | required
